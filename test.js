@@ -9058,10 +9058,10 @@ var cornerContourHeapsTest_CornerContourHeapsTest = function() {
 	this.arc0_2 = "M 100 200 A 100 50 0.0 1 1 250 150";
 	this.arc0_1 = "M 100 200 A 100 50 0.0 1 0 250 150";
 	this.arc0_0 = "M 100 200 A 100 50 0.0 0 1 250 150";
-	this.lightGray = 13882323;
-	this.gainsboro = 14474460;
-	this.silver = 12632256;
-	this.crimson = 14423100;
+	this.lightGray = -2894893;
+	this.gainsboro = -2302756;
+	this.silver = -4144960;
+	this.crimson = -2354116;
 	this.cubictest_d = "M100,200 C100,100 250,100 250,200S400,300 400,200";
 	this.quadtest_d = "M200,300 Q400,50 600,300 T1000,300";
 	hxd_App.call(this);
@@ -9102,7 +9102,6 @@ cornerContourHeapsTest_CornerContourHeapsTest.prototype = $extend(hxd_App.protot
 		var green = (color >> 8 & 255) / 255;
 		var blue = (color & 255) / 255;
 		var alpha = (color >> 24 & 255) / 255;
-		var alpha = 1.;
 		this.g.beginFill(-1);
 		this.g.addVertex(ax * 2,ay * 2,red,green,blue,alpha);
 		this.g.addVertex(bx * 2,by * 2,red,green,blue,alpha);

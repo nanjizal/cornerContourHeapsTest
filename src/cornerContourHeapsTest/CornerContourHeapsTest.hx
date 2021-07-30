@@ -57,7 +57,7 @@ class CornerContourHeapsTest extends hxd.App {
         var green = greenChannel( color );
         var blue  = blueChannel( color );
         var alpha = alphaChannel( color );
-        var alpha = 1.;
+        //var alpha = 1.;
         g.beginFill( 0xffffffff );
         g.addVertex( ax*2, ay*2, red, green, blue, alpha );
         g.addVertex( bx*2, by*2, red, green, blue, alpha );
@@ -224,10 +224,10 @@ class CornerContourHeapsTest extends hxd.App {
     }
     
     // elipses
-    var crimson     = 0xDC143C;
-    var silver      = 0xC0C0C0;
-    var gainsboro   = 0xDCDCDC;
-    var lightGray   = 0xD3D3D3;
+    var crimson     = 0xFFDC143C;
+    var silver      = 0xFFC0C0C0;
+    var gainsboro   = 0xFFDCDCDC;
+    var lightGray   = 0xFFD3D3D3;
     var arc0_0      = "M 100 200 A 100 50 0.0 0 1 250 150";
     var arc0_1      = "M 100 200 A 100 50 0.0 1 0 250 150";
     var arc0_2      = "M 100 200 A 100 50 0.0 1 1 250 150";
