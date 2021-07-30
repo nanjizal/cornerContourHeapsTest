@@ -1,0 +1,19 @@
+-lib fracs
+-lib justPath
+-lib pallette
+-lib heaps
+-lib hxPolyK
+-lib poly2trihx 
+-lib hxGeomAlgo
+-lib cornerContour
+
+-v
+
+#-D doc-gen
+--macro include('cornerContourHeapsTest')
+-cp src
+-main cornerContourHeapsTest.doc.Doc
+--no-output
+-xml output.xml
+-js foo
+-D dump==pretty

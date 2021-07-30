@@ -1,0 +1,4 @@
+-cmd haxe generate.hxml
+-cmd haxelib run dox -i output.xml --title "cornerContourHeapsTest documentation" -D themeColor 0x003399 -D source-path https://github.com/nanjizal/cornerContourHeapsTest/tree/master/src/ --toplevel-package cornerContourHeapsTest
+-cmd cd pages
+-cmd open index.html
