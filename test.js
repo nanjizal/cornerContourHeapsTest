@@ -9094,19 +9094,33 @@ cornerContourHeapsTest_CornerContourHeapsTest.prototype = $extend(hxd_App.protot
 		this.cubicSVG();
 		this.quadSVG();
 		this.drawHeaps();
-		cornerContour_io_Array2DTriangles.applyFill(this.pen2D.arr,$bind(this,this.triangle2DFill));
+		this.rearrageDrawData();
 	}
-	,triangle2DFill: function(ax,ay,bx,by,cx,cy,color) {
-		haxe_Log.trace(color,{ fileName : "src/cornerContourHeapsTest/CornerContourHeapsTest.hx", lineNumber : 55, className : "cornerContourHeapsTest.CornerContourHeapsTest", methodName : "triangle2DFill"});
-		var red = (color >> 16 & 255) / 255;
-		var green = (color >> 8 & 255) / 255;
-		var blue = (color & 255) / 255;
-		var alpha = (color >> 24 & 255) / 255;
-		this.g.beginFill(-1);
-		this.g.addVertex(ax * 2,ay * 2,red,green,blue,alpha);
-		this.g.addVertex(bx * 2,by * 2,red,green,blue,alpha);
-		this.g.addVertex(cx * 2,cy * 2,red,green,blue,alpha);
-		this.g.endFill();
+	,rearrageDrawData: function() {
+		var pen = this.pen2D;
+		var data = pen.arr;
+		var totalTriangles = (data.length - 1) / 7 | 0;
+		var red = 0.;
+		var green = 0.;
+		var blue = 0.;
+		var alpha = 0.;
+		var color = 0;
+		var _g = 0;
+		var _g1 = totalTriangles;
+		while(_g < _g1) {
+			var i = _g++;
+			pen.arr[0] = i;
+			color = cornerContour_io_Array2DTriangles.get_color(data) | 0;
+			alpha = (color >> 24 & 255) / 255;
+			red = (color >> 16 & 255) / 255;
+			green = (color >> 8 & 255) / 255;
+			blue = (color & 255) / 255;
+			this.g.beginFill(-1);
+			this.g.addVertex(cornerContour_io_Array2DTriangles.get_ax(data) * 2,cornerContour_io_Array2DTriangles.get_ay(data) * 2,red,green,blue,alpha);
+			this.g.addVertex(cornerContour_io_Array2DTriangles.get_bx(data) * 2,cornerContour_io_Array2DTriangles.get_by(data) * 2,red,green,blue,alpha);
+			this.g.addVertex(cornerContour_io_Array2DTriangles.get_cx(data) * 2,cornerContour_io_Array2DTriangles.get_cy(data) * 2,red,green,blue,alpha);
+			this.g.endFill();
+		}
 	}
 	,renderDraw: function() {
 	}

@@ -44,25 +44,31 @@ class CornerContourHeapsTest extends hxd.App {
         cubicSVG();
         quadSVG();
         drawHeaps();
-        pen2D.applyFill( triangle2DFill );
+        rearrageDrawData();
     }
-    public function triangle2DFill( ax: Float, ay: Float
-                                  , bx: Float, by: Float
-                                  , cx: Float, cy: Float
-                                  , ?color: Int ){
-        
-        // convert color to ARGB
-        trace( color );
-        var red   = redChannel( color );
-        var green = greenChannel( color );
-        var blue  = blueChannel( color );
-        var alpha = alphaChannel( color );
-        //var alpha = 1.;
-        g.beginFill( 0xffffffff );
-        g.addVertex( ax*2, ay*2, red, green, blue, alpha );
-        g.addVertex( bx*2, by*2, red, green, blue, alpha );
-        g.addVertex( cx*2, cy*2, red, green, blue, alpha );
-        g.endFill();
+    public
+    function rearrageDrawData(){
+        var pen = pen2D;
+        var data = pen.arr;
+        var totalTriangles = Std.int( data.size/7 );
+        var red    = 0.;
+        var green  = 0.;
+        var blue   = 0.; 
+        var alpha  = 0.;
+        var color: Int  = 0;
+        for( i in 0...totalTriangles ){
+            pen.pos = i;
+            color = Std.int( data.color );
+            alpha = alphaChannel( color );
+            red   = redChannel(   color );
+            green = greenChannel( color );
+            blue  = blueChannel(  color );
+            g.beginFill( 0xffffffff );
+            g.addVertex( data.ax*2, data.ay*2, red, green, blue, alpha );
+            g.addVertex( data.bx*2, data.by*2, red, green, blue, alpha );
+            g.addVertex( data.cx*2, data.cy*2, red, green, blue, alpha );
+            g.endFill();
+        }
     }
     public static inline
     function alphaChannel( int: Int ) : Float
